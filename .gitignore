@@ -1,0 +1,12 @@
+.idea
+node_modules
+dist
+src/templates
+src/modules/photoGallery
+src/tmp
+.DS_Store
+src/config
+.ftppass
+config.json
+bower_components
+bower.json
