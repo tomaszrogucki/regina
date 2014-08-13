@@ -12,7 +12,6 @@ module.exports = function (grunt) {
         concat: {
             styl: {
                 src: [
-                    './src/assets/css/normalize.styl',
                     './src/assets/css/icons.styl',
                     './src/assets/css/colors.styl',
                     './src/assets/css/fonts.styl',
@@ -21,6 +20,20 @@ module.exports = function (grunt) {
                     './src/assets/**/*.styl'
                 ],
                 dest: './src/tmp/style.styl'
+            },
+            js: {
+                src: [
+                    './vendor/bootstrap/js/bootstrap.js',
+                    './src/tmp/application.js'
+                ],
+                dest: './src/tmp/application.js'
+            },
+            css: {
+                src: [
+                    './vendor/bootstrap/css/bootstrap.css',
+                    './src/tmp/style.css'
+                ],
+                dest: './src/tmp/style.css'
             }
         },
 
@@ -59,7 +72,7 @@ module.exports = function (grunt) {
         stylus: {
             prod: {
                 files: {
-                    './dist/production/www/assets/css/style.css': './src/tmp/style.styl'
+                    './src/tmp/style.css': './src/tmp/style.styl'
                 }
             },
             dev: {
@@ -67,30 +80,15 @@ module.exports = function (grunt) {
                     compress: false
                 },
                 files: {
-                    './dist/development/www/assets/css/style.css': './src/tmp/style.styl'
+                    './src/tmp/style.css': './src/tmp/style.styl'
                 }
             }
         },
 
         browserify2: {
-            prod: {
+            app: {
                 entry: ['./src/modules/**/*.js'],
-                compile: './dist/production/www/assets/js/application.js',
-                options: {
-                    expose: {
-                        files: [
-                            {
-                                cwd: './src/',
-                                src: ['**/*.js']
-                            }
-                        ]
-                    }
-
-                }
-            },
-            dev: {
-                entry: ['./src/modules/**/*.js'],
-                compile: './dist/development/www/assets/js/application.js',
+                compile: './src/tmp/application.js',
                 options: {
                     expose: {
                         files: [
@@ -169,6 +167,45 @@ module.exports = function (grunt) {
                 cwd: './src/assets',
                 src: ['**/*.jpg', '**/*.png', '**/*.ttf', '**/*.woff'],
                 dest: './dist/development/www/assets'
+            },
+
+            prodVendor: {
+                expand: true,
+                cwd: './vendor/bootstrap',
+                src: ['**/*.ttf', '**/*.woff'],
+                dest: './dist/production/www/assets'
+            },
+            devVendor: {
+                expand: true,
+                cwd: './vendor/bootstrap',
+                src: ['**/*.ttf', '**/*.woff'],
+                dest: './dist/development/www/assets'
+            },
+
+            prodJs: {
+                expand: false,
+                cwd: './src/tmp',
+                src: ['application.js'],
+                dest: './dist/production/www/assets/js'
+            },
+            devJs: {
+                expand: false,
+                cwd: './src/tmp',
+                src: ['application.js'],
+                dest: './dist/development/www/assets/js'
+            },
+
+            prodCss: {
+                expand: false,
+                cwd: './src/tmp',
+                src: ['style.css'],
+                dest: './dist/production/www/assets/css'
+            },
+            devCss: {
+                expand: false,
+                cwd: './src/tmp',
+                src: ['style.css'],
+                dest: './dist/development/www/assets/css'
             }
         },
 
@@ -237,12 +274,12 @@ module.exports = function (grunt) {
     });
 
 
-    grunt.registerTask('copyDev', ['newer:copy:devHtml', 'newer:copy:devImg', 'newer:copy:devApi', 'newer:copy:devConfig', 'newer:copy:devAssets']);
-    grunt.registerTask('copyProd', ['copy:prodHtml', 'copy:prodImg', 'copy:prodApi', 'copy:prodConfig', 'copy:prodAssets']);
+    grunt.registerTask('copyDev', ['newer:copy:devHtml', 'newer:copy:devImg', 'newer:copy:devApi', 'newer:copy:devConfig', 'newer:copy:devAssets', 'newer:copy:devVendor', 'newer:copy:devJs']);
+    grunt.registerTask('copyProd', ['copy:prodHtml', 'copy:prodImg', 'copy:prodApi', 'copy:prodConfig', 'copy:prodAssets', 'copy:prodVendor', 'copy:prodJs']);
 
     grunt.registerTask('prepare', ['concat:styl', 'jade:templates']);
-    grunt.registerTask('devBuild', ['prepare', 'stylus:dev', 'jade:dev', 'browserify2:dev', 'copyDev']);
-    grunt.registerTask('prodBuild', ['clean:prod', 'prepare', 'stylus:prod', 'jade:prod', 'browserify2:prod', 'copyProd', 'hashres:prod']);
+    grunt.registerTask('devBuild', ['prepare', 'stylus:dev', 'concat:css', 'jade:dev', 'browserify2:app', 'concat:js', 'copyDev']);
+    grunt.registerTask('prodBuild', ['clean:prod', 'prepare', 'stylus:prod', 'concat:css', 'jade:prod', 'browserify2:app', 'concat:js', 'copyProd', 'hashres:prod']);
 
 
 
