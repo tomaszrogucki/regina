@@ -1,7 +1,7 @@
 {
   "checksum": {
-    "previous": "eeaf16afc98a22e58685727a61908bfe4c16cc7d706e1c4dcd3888fc0154b666",
-    "current": "eeaf16afc98a22e58685727a61908bfe4c16cc7d706e1c4dcd3888fc0154b666"
+    "previous": "92e294c45d3db03ea59fcfd17840513b0beba9d0d34b200c61e3606decc08e30",
+    "current": "92e294c45d3db03ea59fcfd17840513b0beba9d0d34b200c61e3606decc08e30"
   },
   "fonts": [
     "../../assets/icons/icons.ttf",
@@ -10,69 +10,21 @@
     "../../assets/icons/icons.eot"
   ],
   "glyphs": {
-    "calendar": {
-      "codepoint": 61696,
-      "source": "../../assets/svg/calendar.svg"
+    "regina-logo": {
+      "codepoint": 61712,
+      "source": "../../assets/svg/regina-logo.svg"
     },
-    "calendar-date": {
-      "codepoint": 61697,
-      "source": "../../assets/svg/calendar-date.svg"
-    },
-    "globe": {
-      "codepoint": 61698,
-      "source": "../../assets/svg/globe.svg"
-    },
-    "globe-black": {
-      "codepoint": 61699,
-      "source": "../../assets/svg/globe-black.svg"
-    },
-    "location": {
-      "codepoint": 61700,
-      "source": "../../assets/svg/location.svg"
-    },
-    "location-big-black": {
-      "codepoint": 61701,
-      "source": "../../assets/svg/location-big-black.svg"
-    },
-    "location-black": {
-      "codepoint": 61702,
-      "source": "../../assets/svg/location-black.svg"
-    },
-    "note": {
-      "codepoint": 61703,
-      "source": "../../assets/svg/note.svg"
-    },
-    "note-bar": {
-      "codepoint": 61704,
-      "source": "../../assets/svg/note-bar.svg"
-    },
-    "note-bar-black": {
-      "codepoint": 61705,
-      "source": "../../assets/svg/note-bar-black.svg"
-    },
-    "note-black": {
-      "codepoint": 61706,
-      "source": "../../assets/svg/note-black.svg"
-    },
-    "note-punch": {
-      "codepoint": 61707,
-      "source": "../../assets/svg/note-punch.svg"
-    },
-    "note-punch-empty": {
-      "codepoint": 61708,
-      "source": "../../assets/svg/note-punch-empty.svg"
-    },
-    "paper-plane": {
-      "codepoint": 61709,
-      "source": "../../assets/svg/paper-plane.svg"
-    },
-    "paper-plane-black": {
-      "codepoint": 61710,
-      "source": "../../assets/svg/paper-plane-black.svg"
+    "regina-logo-and-text": {
+      "codepoint": 61713,
+      "source": "../../assets/svg/regina-logo-and-text.svg"
     },
     "regina-logo-round": {
-      "codepoint": 61711,
+      "codepoint": 61714,
       "source": "../../assets/svg/regina-logo-round.svg"
+    },
+    "regina-logo-text": {
+      "codepoint": 61715,
+      "source": "../../assets/svg/regina-logo-text.svg"
     }
   },
   "options": {

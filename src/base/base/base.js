@@ -7,7 +7,8 @@ var template = require('helpers').template;
 
 var BaseView = Backbone.View.extend({
     render: function () {
-        this.$el.html(template(this.template, this.model.toJSON()));
+        var modelJson = this.model ? this.model.toJSON() : {};
+        this.$el.html(template(this.template, modelJson));
         return this;
     }
 });
