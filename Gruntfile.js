@@ -73,7 +73,7 @@ module.exports = function (grunt) {
 
         browserify2: {
             prod: {
-                entry: ['./src/modules/main/main.js'],
+                entry: ['./src/modules/skeleton/skeleton.js'],
                 compile: './dist/production/www/assets/js/application.js',
                 options: {
                     expose: {
@@ -88,7 +88,7 @@ module.exports = function (grunt) {
                 }
             },
             dev: {
-                entry: ['./src/modules/main/main.js'],
+                entry: ['./src/modules/skeleton/skeleton.js'],
                 compile: './dist/development/www/assets/js/application.js',
                 options: {
                     expose: {
