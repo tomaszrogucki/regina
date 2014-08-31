@@ -18,7 +18,7 @@ var SkeletonView = Base.View.extend({
     },
 
     render: function () {
-        Base.View.prototype.render.call(this);
+        Base.View.prototype.render.apply(this, arguments);
 
         this.topNavView.$el = this.$('#topNav');
         this.topNavView.render();
