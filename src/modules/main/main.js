@@ -9,6 +9,7 @@ var CalendarWidget = require('calendarWidget');
 
 var MainView = Base.View.extend({
     template: 'mainTemplate',
+    id: 'main',
 
     initialize: function () {
         this.newsWidgetView = new NewsWidget.View();
