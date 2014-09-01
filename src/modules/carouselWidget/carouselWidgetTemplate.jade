@@ -1,0 +1,20 @@
+.container
+    #carouselContainer.carousel.slide(data-ride='carousel')
+        ol.carousel-indicators
+            li.active(data-target='#carouselContainer', data-slide-to='0')
+            li(data-target='#carouselContainer', data-slide-to='1')
+            li(data-target='#carouselContainer', data-slide-to='2')
+        .carousel-inner
+            .item.active
+                img(src='assets/imgs/reginaCarousel1.jpg', alt='Regina Kowalska-Stall')
+                .carousel-caption Biuro Reginy Kowalskiej-Stall
+            .item
+                img(src='assets/imgs/reginaCarousel2.jpg', alt='Regina Kowalska-Stall')
+                .carousel-caption Biuro Reginy Kowalskiej-Stall
+            .item
+                img(src='assets/imgs/reginaCarousel3.jpg', alt='Regina Kowalska-Stall')
+                .carousel-caption Biuro Reginy Kowalskiej-Stall
+        a.left.carousel-control(href='#carouselContainer', role='button', data-slide='prev')
+            span.glyphicon.glyphicon-chevron-left
+        a.right.carousel-control(href='#carouselContainer', role='button', data-slide='next')
+            span.glyphicon.glyphicon-chevron-right

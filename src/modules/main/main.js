@@ -5,6 +5,7 @@ Backbone.$ = $;
 var Base = require('base');
 var NewsWidget = require('newsWidget');
 var CalendarWidget = require('calendarWidget');
+var CarouselWidget = require('carouselWidget');
 
 
 var MainView = Base.View.extend({
@@ -14,6 +15,7 @@ var MainView = Base.View.extend({
     initialize: function () {
         this.newsWidgetView = new NewsWidget.View();
         this.calendarWidgetView = new CalendarWidget.View();
+        this.carouselWidgetView = new CarouselWidget.View();
     },
 
     render: function () {
@@ -24,6 +26,9 @@ var MainView = Base.View.extend({
 
         this.calendarWidgetView.$el = this.$('#calendarWidget');
         this.calendarWidgetView.render();
+
+        this.carouselWidgetView.$el = this.$('#carouselWidget');
+        this.carouselWidgetView.render();
 
         return this;
     }
