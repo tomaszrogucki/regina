@@ -203,6 +203,14 @@ module.exports = function (grunt) {
                     'dist/production/www/assets/css/*.css'
                 ]
             },
+            prodPhotos: {
+                src: [
+                    'dist/production/www/assets/photos/*.*'
+                ],
+                dest: [
+                    'dist/production/www/assets/js/*.js'
+                ]
+            },
             dev: {
                 src: [
                     'dist/development/www/assets/css/*.css',
@@ -214,6 +222,14 @@ module.exports = function (grunt) {
                 dest: [
                     'dist/development/www/index.html',
                     'dist/development/www/assets/css/*.css'
+                ]
+            },
+            devPhotos: {
+                src: [
+                    'dist/development/www/assets/photos/*.*'
+                ],
+                dest: [
+                    'dist/development/www/assets/js/*.js'
                 ]
             },
             underConstruction: {
@@ -264,7 +280,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('prepare', ['concat:styl', 'jade:templates']);
     grunt.registerTask('devBuild', ['prepare', 'stylus:dev', 'jade:dev', 'browserify2:dev', 'copyDev']);
-    grunt.registerTask('prodBuild', ['clean:prod', 'prepare', 'stylus:prod', 'jade:prod', 'browserify2:prod', 'copyProd', 'hashres:prod']);
+    grunt.registerTask('prodBuild', ['clean:prod', 'prepare', 'stylus:prod', 'jade:prod', 'browserify2:prod', 'copyProd', 'hashres:prod', 'hashres:prodPhotos']);
 
 
 
