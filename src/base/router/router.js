@@ -9,6 +9,7 @@ var Router = Backbone.Router.extend({
         'glowna': 'main',
         'omnie': 'aboutMe',
         'uslugi': 'services',
+        'kontakt': 'contact',
         '*path': 'defaultRoute'
     },
 
@@ -27,6 +28,10 @@ var Router = Backbone.Router.extend({
 
     services: function () {
         this.skeletonView.renderModule('services');
+    },
+
+    contact: function () {
+        this.skeletonView.renderModule('contact');
     },
 
     defaultRoute: function(path) {

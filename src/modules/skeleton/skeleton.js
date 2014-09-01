@@ -9,6 +9,7 @@ var Main = require('main');
 var Footer = require('footer');
 var AboutMe = require('aboutMe');
 var Services = require('services');
+var Contact = require('contact');
 
 
 var SkeletonView = Base.View.extend({
@@ -25,7 +26,8 @@ var SkeletonView = Base.View.extend({
         this.modules = {
             aboutMe: AboutMe,
             main: Main,
-            services: Services
+            services: Services,
+            contact: Contact
         }
     },
 
