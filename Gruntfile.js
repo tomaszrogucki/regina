@@ -258,7 +258,7 @@ module.exports = function (grunt) {
                 },
                 src: 'dist/production/www',
                 dest: '/public_html/kowalskastall',
-                exclusions: ['dist/production/www/.htaccess']
+                exclusions: []
             }
         },
 
