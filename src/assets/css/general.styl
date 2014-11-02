@@ -1,37 +1,58 @@
 body
-  background-color $primary
-  color $primaryDark
+  background-color $background
+  color $primary
   font-size 16px
   font-weight 200
   padding-top 70px
 
 a, a:hover, a:active, a:link
-  color $primaryDark
+  color $primary
 
 .panel
-  background-color $primaryLight
+  background-color $background
 .panel-default
-  border-color $primaryDark
+  border-color $primaryLighter
   .panel-heading
     background-color $primaryLighter
-    border-color $primaryDark
-    color $primaryDark
+    border-color $primaryLighter
+    color $background
   .panel-body
-    background-color $primaryLight
-    border-color $primaryDark
+    background-color transparent
+    border-color $primaryLighter
     color $primaryDark
   .list-group-item
-    background-color $primaryLight
-    border-color $primaryDark
+    background-color transparent
+    border-color $primaryLighter
     color $primaryDark
+  .badge
+    background-color $primaryLighter
+    color $background
+    float right
+
+.panel.inverse
+  background-color $primaryLighter
+.panel-default.inverse
+  border-color $primary
+  .panel-heading
+    background-color $primary
+    border-color $primary
+    color $primaryLighter
+  .panel-body
+    background-color $primaryLighter
+    border-color $primary
+    color $primary
+  .list-group-item
+    background-color $primaryLighter
+    border-color $primary
+    color $primary
   .badge
     background-color $primary
     color $primaryLighter
     float right
 
 .thumbnail
-  background-color $primaryDark
-  border 1px solid $primaryDark
-  color $primaryLight
+  background-color $primaryLight
+  border 1px solid $primaryLight
+  color $background
   .caption
-    color $primaryLight
+    color $background
