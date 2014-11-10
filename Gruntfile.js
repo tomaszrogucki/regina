@@ -282,6 +282,7 @@ module.exports = function (grunt) {
     grunt.registerTask('devBuild', ['prepare', 'stylus:dev', 'jade:dev', 'browserify2:dev', 'copyDev']);
     grunt.registerTask('prodBuild', ['clean:prod', 'prepare', 'stylus:prod', 'jade:prod', 'browserify2:prod', 'copyProd', 'hashres:prod', 'hashres:prodPhotos']);
 
+    grunt.registerTask('deploy', ['prodBuild', 'ftp-deploy:prod']);
 
 
     // older
