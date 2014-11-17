@@ -160,13 +160,13 @@ module.exports = function (grunt) {
             prodAssets: {
                 expand: true,
                 cwd: './src/assets',
-                src: ['**/*.jpg', '**/*.png', '**/*.ttf', '**/*.woff', '**/*.docx'],
+                src: ['**/*.jpg', '**/*.png', '**/*.ttf', '**/*.woff', '**/*.docx', '**/*.pdf'],
                 dest: './dist/production/www/assets'
             },
             devAssets: {
                 expand: true,
                 cwd: './src/assets',
-                src: ['**/*.jpg', '**/*.png', '**/*.ttf', '**/*.woff', '**/*.docx'],
+                src: ['**/*.jpg', '**/*.png', '**/*.ttf', '**/*.woff', '**/*.docx', '**/*.pdf'],
                 dest: './dist/development/www/assets'
             },
 
