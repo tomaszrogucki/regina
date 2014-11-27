@@ -1,22 +1,81 @@
 #topNav
-  .container
-    margin-top 10px
-  .navbar-inverse
-    background-color $primaryDarker
-    border 0 solid $primary
-    color $secondaryLight
-    text-transform uppercase
+  .topNavBanner
+    background-color $secondary
+    color $secondaryLighter
+    height 110px
+    padding-top 20px
+
+  .topNavAffix
+    background-color $background
+    display none
+
   .navbar
-    height 50px
+    border-radius 0
+    margin-bottom 0
+    padding-bottom 10px
+
+  .navbar-inverse
+    background-color $secondary
+    border 0 solid transparent
+    border-bottom 5px solid $secondaryDarker
+    color $background
+
+  .affix
+    left 0
+    top 0
+    transition height 1s
+    width 100%
+    z-index 3
+    .logoMini
+      display block
+    .topNavImage
+      height 50px
+      transition height 300ms
+
+  .topNavImage
+    background url(../photos/penAndCalculator.jpg) no-repeat left center
+    background-size cover
+    box-shadow inset 0 0 25px $black;
+    height 300px
+    transition height 300ms
+
+  #topNavCollapse
+    padding-top 10px
+
+  .logoMini
+    display none
+    margin-top 10px /* remove this */
+
+
+
+  .topNavLogo
+    font-size 3em
+    margin-left 15px
+  .topNavLogoText
+    font-size 228px
+    margin-top -35px
+  .topNavSlogan
+    text-align right
+    div
+      background-color $secondaryDark
+      display inline-block
+      padding 15px
+      font-size 1.4em
+      font-style italic
+      text-align right
   .nav
+    text-transform uppercase
     li
       a
+        color $background
         margin-right 2px
         padding-top 5px
         padding-bottom 5px
       a:hover
-        background-color $secondary
-        color $primaryDarker
+        background-color $background
+        color $secondary
   a.navbar-brand
+    color $background
+    height auto
     padding-top 5px
     padding-bottom 5px

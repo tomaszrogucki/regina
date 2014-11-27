@@ -1,22 +1,47 @@
-nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+.topNavBanner
+    .container
+        .row
+            .col-sm-1.topNavLogoPlaceholder
+                div.topNavLogo
+                    span.icon-regina-logo
+            .col-sm-5.topNavLogoPlaceholder
+                div.topNavLogoText
+                    span.icon-regina-logo-text
+            .col-sm-6.topNavSlogan
+                div.img-rounded Profesjonalne usługi księgowe i kadrowe
+
+.topNavAffix
+
+.navbar.navbar-inverse(role='navigation', data-spy='affix', data-offset-top='110')
+    .topNavImage
     .container
         .navbar-header
             button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#topNavCollapse')
                 span.icon-bar
                 span.icon-bar
                 span.icon-bar
-            a.navbar-brand(href='glowna')
-                span(class='icon-regina-logo')
+            a.navbar-brand.logoMini(href='glowna')
+                span.icon-regina-logo
         #topNavCollapse.collapse.navbar-collapse
-            ul.nav.navbar-nav
+            ul.nav.navbar-nav.navbar-right
                 li
-                    a.img-rounded(href='omnie') O firmie
+                    a.img-rounded(href='omnie')
+                        span.glyphicon.glyphicon-briefcase(aria-hidden='true')
+                        | &nbsp;&nbsp;O firmie
                 li
-                    a.img-rounded(href='uslugi') Usługi
+                    a.img-rounded(href='uslugi')
+                        span.glyphicon.glyphicon-th-list(aria-hidden='true')
+                        | &nbsp;&nbsp;Usługi
                 li
-                    a.img-rounded(href='wiadomosci') Wiadomości
+                    a.img-rounded(href='wiadomosci')
+                        span.glyphicon.glyphicon-list-alt(aria-hidden='true')
+                        | &nbsp;&nbsp;Wiadomości
                 li
-                    a.img-rounded(href='kontakt') Kontakt
+                    a.img-rounded(href='kontakt')
+                        span.glyphicon.glyphicon-earphone(aria-hidden='true')
+                        | &nbsp;&nbsp;Kontakt
+
+
                 //li.visible-sm.visible-md.visible-lg
                 //    a(href='#') Kalendarz spotkań
                 //li.visible-sm.visible-md.visible-lg
@@ -30,3 +55,5 @@ nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
                 //        li.divider
                 //        li
                 //            a(href='#') Aktualności
+    //.topNavImage
+    //    img(src='assets/photos/pen.png')
