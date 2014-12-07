@@ -3,6 +3,7 @@ var Backbone = require('backbone');
 Backbone.$ = $;
 
 var Skeleton = require('skeleton');
+var analytics = require('analytics');
 
 var Router = Backbone.Router.extend({
     routes: {
@@ -15,10 +16,13 @@ var Router = Backbone.Router.extend({
     },
 
     initialize: function () {
+        analytics.init();
+
         this.skeletonView = new Skeleton.View();
         this.skeletonView.render();
 
-        this.listenTo(this.skeletonView, 'navigateTo', this.navigateTo)
+        this.listenTo(this.skeletonView, 'navigateTo', this.navigateTo);
+        this.listenTo(this, 'route', analytics.pageView);
     },
 
     main: function () {
