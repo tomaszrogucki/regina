@@ -1,6 +1,7 @@
 #topNav
   .topNavBanner
     background-color $secondary
+    border-bottom 5px solid $secondaryDarker
     color $secondaryLighter
     height 110px
     padding-top 20px
@@ -31,6 +32,14 @@
     .topNavImage
       height 50px
       transition height 300ms
+    .topNavImageText
+      background-color transparent
+      color $secondary
+      font-size 20px
+      padding 10px
+      padding-right 15px
+      margin 0
+      text-transform uppercase
 
   .topNavImage
     background url(../photos/penAndCalculator.jpg) no-repeat left center
@@ -38,6 +47,17 @@
     box-shadow inset 0 0 25px $black;
     height 300px
     transition height 300ms
+
+  .topNavImageTextPlaceholder
+    text-align right
+
+  .topNavImageText
+    background-color $secondary50
+    display inline-block
+    font-size 1.4em
+    margin-top 200px
+    padding 15px
+    text-align left
 
   #topNavCollapse
     padding-top 10px

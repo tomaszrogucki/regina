@@ -208,7 +208,8 @@ module.exports = function (grunt) {
                     'dist/production/www/assets/photos/*.*'
                 ],
                 dest: [
-                    'dist/production/www/assets/js/*.js'
+                    'dist/production/www/assets/js/*.js',
+                    'dist/production/www/assets/css/*.css'
                 ]
             },
             dev: {
@@ -229,7 +230,8 @@ module.exports = function (grunt) {
                     'dist/development/www/assets/photos/*.*'
                 ],
                 dest: [
-                    'dist/development/www/assets/js/*.js'
+                    'dist/development/www/assets/js/*.js',
+                    'dist/development/www/assets/css/*.css'
                 ]
             },
             underConstruction: {
@@ -283,10 +285,10 @@ module.exports = function (grunt) {
     grunt.registerTask('prodBuild', ['clean:prod', 'prepare', 'stylus:prod', 'jade:prod', 'browserify2:prod', 'copyProd', 'hashres:prod', 'hashres:prodPhotos']);
 
     grunt.registerTask('deploy', ['prodBuild', 'ftp-deploy:prod']);
+    grunt.registerTask('default', ['watch:devBuild']);
 
 
     // older
-    grunt.registerTask('default', ['watch']);
     grunt.registerTask('build', ['jade', 'browserify2', 'concat', 'stylus', 'newer:copy', 'hashres']);
     grunt.registerTask('staticAssets', ['newer:copy:api', 'newer:copy:html', 'newer:copy:img', 'newer:copy:assets']);
     grunt.registerTask('style', ['concat:styl', 'stylus']);
