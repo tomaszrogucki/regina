@@ -12,7 +12,7 @@
 
 .topNavAffix
 
-.navbar.navbar-inverse(role='navigation', data-spy='affix', data-offset-top='110')
+.navbar.navbar-inverse(role='navigation', data-spy='affix', data-offset-top='365')
     .topNavImage
         .container
             .row
@@ -25,24 +25,28 @@
                 span.icon-bar
                 span.icon-bar
                 span.icon-bar
-            a.navbar-brand.logoMini(href='glowna')
+            a.navigationItem.navbar-brand.logoMini(href='glowna')
                 span.icon-regina-logo
         #topNavCollapse.collapse.navbar-collapse
             ul.nav.navbar-nav.navbar-right
                 li
-                    a.img-rounded(href='omnie')
+                    a.navigationItem.img-rounded(href='omnie')
                         span.glyphicon.glyphicon-briefcase(aria-hidden='true')
                         | &nbsp;&nbsp;O firmie
                 li
-                    a.img-rounded(href='uslugi')
+                    a.navigationItem.img-rounded(href='uslugi')
                         span.glyphicon.glyphicon-th-list(aria-hidden='true')
                         | &nbsp;&nbsp;Usługi
                 li
-                    a.img-rounded(href='wiadomosci')
+                    a.navigationItem.img-rounded(href='wiadomosci')
                         span.glyphicon.glyphicon-list-alt(aria-hidden='true')
                         | &nbsp;&nbsp;Wiadomości
                 li
-                    a.img-rounded(href='kontakt')
+                    a.img-rounded(href='assets/files/cennik.pdf', target='_blank')
+                        span.glyphicon.glyphicon-credit-card(aria-hidden='true')
+                        | &nbsp;&nbsp;Cennik
+                li
+                    a.navigationItem.img-rounded(href='kontakt')
                         span.glyphicon.glyphicon-earphone(aria-hidden='true')
                         | &nbsp;&nbsp;Kontakt
 

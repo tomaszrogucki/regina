@@ -6,6 +6,7 @@ var Base = require('base');
 var NewsWidget = require('newsWidget');
 var CalendarWidget = require('calendarWidget');
 var CarouselWidget = require('carouselWidget');
+var PromotionsWidget = require('promotionsWidget');
 
 
 var MainView = Base.View.extend({
@@ -16,6 +17,7 @@ var MainView = Base.View.extend({
         this.newsWidgetView = new NewsWidget.View();
         this.calendarWidgetView = new CalendarWidget.View();
         this.carouselWidgetView = new CarouselWidget.View();
+        this.promotionsWidgetView = new PromotionsWidget.View();
     },
 
     render: function () {
@@ -29,6 +31,9 @@ var MainView = Base.View.extend({
 
         this.carouselWidgetView.$el = this.$('#carouselWidget');
         this.carouselWidgetView.render();
+
+        this.promotionsWidgetView.$el = this.$('#promotionsWidget');
+        this.promotionsWidgetView.render();
 
         return this;
     }

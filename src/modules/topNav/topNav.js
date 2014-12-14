@@ -11,14 +11,15 @@ var TopNavView = Base.View.extend({
     render: function () {
         Base.View.prototype.render.apply(this, arguments);
 
-        this.$('a').on('click', function (event) {
+        this.$('a.navigationItem').on('click', function (event) {
             event.preventDefault();
             this.trigger('itemClicked', $(event.currentTarget).attr('href'));
         }.bind(this));
 
         var affixHeight = this.$('.navbar').height();
         //this.$('.topNavAffix').height(120);
-        this.$('.topNavAffix').height(affixHeight);
+        // TODO: remove this 20
+        this.$('.topNavAffix').height(affixHeight + 20);
 
         this.$el.on('affixed.bs.affix', function () {
             this.$('.topNavAffix').show();
