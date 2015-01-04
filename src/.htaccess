@@ -1,6 +1,8 @@
 <IfModule mod_rewrite.c>
    RewriteEngine On
    RewriteBase /
+   RewriteRule .? - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+   RewriteRule api/v1/(.*)$ api/v1/RAPI.php?request=$1 [QSA,NC,L]
    RewriteRule ^index\.html$ - [L]
    RewriteCond %{REQUEST_FILENAME} !-f
    RewriteCond %{REQUEST_FILENAME} !-d

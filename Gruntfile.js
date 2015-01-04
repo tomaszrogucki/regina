@@ -272,6 +272,10 @@ module.exports = function (grunt) {
             devBuild: {
                 files: ['./src/**/*.*'],
                 tasks: ['devBuild']
+            },
+            api: {
+                files: ['./src/api/**/*.*'],
+                tasks: ['copy:devApi']
             }
         }
     });
@@ -285,6 +289,7 @@ module.exports = function (grunt) {
     grunt.registerTask('prodBuild', ['clean:prod', 'prepare', 'stylus:prod', 'jade:prod', 'browserify2:prod', 'copyProd', 'hashres:prod', 'hashres:prodPhotos']);
 
     grunt.registerTask('deploy', ['prodBuild', 'ftp-deploy:prod']);
+    grunt.registerTask('api', ['watch:api']);
     grunt.registerTask('default', ['watch:devBuild']);
 
 
