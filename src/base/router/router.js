@@ -1,9 +1,11 @@
 var $ = require('jquery');
 var Backbone = require('backbone');
 Backbone.$ = $;
+var Base = require('base');
 
 var Skeleton = require('skeleton');
 var analytics = require('analytics');
+var session = require('session');
 
 var Router = Backbone.Router.extend({
     routes: {
@@ -12,11 +14,13 @@ var Router = Backbone.Router.extend({
         'uslugi': 'services',
         'kontakt': 'contact',
         'wiadomosci': 'information',
+        'login': 'login',
         '*path': 'main'
     },
 
     initialize: function () {
         analytics.init();
+        session.init();
 
         this.skeletonView = new Skeleton.View();
         this.skeletonView.render();
@@ -43,6 +47,10 @@ var Router = Backbone.Router.extend({
 
     information: function () {
         this.skeletonView.renderModule('information');
+    },
+
+    login: function () {
+        this.skeletonView.renderModule('login');
     },
 
     navigateTo: function (fragment) {

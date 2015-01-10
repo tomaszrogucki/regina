@@ -11,6 +11,7 @@ var AboutMe = require('aboutMe');
 var Services = require('services');
 var Contact = require('contact');
 var Information = require('information');
+var Login = require('login');
 
 
 var SkeletonView = Base.View.extend({
@@ -29,20 +30,21 @@ var SkeletonView = Base.View.extend({
             main: Main,
             services: Services,
             contact: Contact,
-            information: Information
+            information: Information,
+            login: Login
         }
     },
 
     render: function () {
         Base.View.prototype.render.apply(this, arguments);
 
-        this.topNavView.$el = this.$('#topNav');
+        this.topNavView.setElement('#topNav');
         this.topNavView.render();
 
         this.mainView.render();
         this.$('#content').append(this.mainView.$el);
 
-        this.footerView.$el = this.$('#footer');
+        this.footerView.setElement('#footer');
         this.footerView.render();
 
         return this;

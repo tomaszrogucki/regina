@@ -179,7 +179,7 @@ module.exports = function (grunt) {
             devVendor: {
                 expand: true,
                 cwd: './vendor/bootstrap',
-                src: ['**/*.ttf', '**/*.woff'],
+                src: ['**/*.ttf', '**/*.woff', '**/*.js', '**/*.css'],
                 dest: './dist/development/www/assets'
             }
         },

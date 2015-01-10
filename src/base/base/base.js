@@ -1,13 +1,14 @@
-var Backbone = require('backbone');
 var $ = require('jquery');
 var _ = require('underscore');
+var Backbone = require('backbone');
+Backbone.$ = $;
 
 var template = require('helpers').template;
 
 
 var BaseView = Backbone.View.extend({
     render: function () {
-        var modelJson = this.model ? this.model.toJSON() : {};
+        var modelJson = (this.model instanceof Backbone.Model) ? this.model.toJSON() : this.model || {};
         this.$el.html(template(this.template, modelJson));
         return this;
     }
@@ -32,9 +33,14 @@ var BaseCollectionView = Backbone.View.extend({
     }
 });
 
+var BaseModel = Backbone.Model;
+
+
 var Base = {
     View: BaseView,
-    CollectionView: BaseCollectionView
+    CollectionView: BaseCollectionView,
+    Model: BaseModel
 };
+
 
 module.exports = Base;

@@ -5,6 +5,10 @@ var helpers = {
 
     production: function () {
         return location.hostname.match(/(.com)|(.pl)$/) ? true : false;
+    },
+
+    api: function (path) {
+        return 'api/v1/' + path;
     }
 };
 

@@ -70,7 +70,8 @@ abstract class API
         switch($this->method) {
         case 'DELETE':
         case 'POST':
-            $this->request = $this->_cleanInputs($_POST);
+            $this->request = json_decode(file_get_contents("php://input"), true);
+//            $this->request = $this->_cleanInputs($_POST);
             break;
         case 'GET':
             $this->request = $this->_cleanInputs($_GET);

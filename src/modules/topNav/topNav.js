@@ -4,12 +4,21 @@ var Backbone = require('backbone');
 Backbone.$ = $;
 var Base = require('base');
 
+var TopNavUser = require('topNavUser');
+
+
 
 var TopNavView = Base.View.extend({
     template: 'topNavTemplate',
 
+    initialize: function () {
+        this.topNavUserView = new TopNavUser.View();
+    },
+
     render: function () {
         Base.View.prototype.render.apply(this, arguments);
+        this.topNavUserView.render();
+        this.$('.topNavItems').append(this.topNavUserView.$el);
 
         this.$('a.navigationItem').on('click', function (event) {
             event.preventDefault();

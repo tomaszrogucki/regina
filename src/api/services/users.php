@@ -89,11 +89,16 @@ class UserService {
     }
 
     public function getPermissionsByUser($userBean) {
-        function getPermissionName($permissionBean) {
-            return $permissionBean->permission;
-        }
+        if($userBean != null) {
+            function getPermissionName($permissionBean) {
+                return $permissionBean->permission;
+            }
 
-        return array_map(getPermissionName, $userBean->sharedPermissionList);
+            return array_map(getPermissionName, $userBean->sharedPermissionList);
+        }
+        else {
+            return [];
+        }
     }
 
     public function setPermissionToUser($permissions, $permission, $userBean) {

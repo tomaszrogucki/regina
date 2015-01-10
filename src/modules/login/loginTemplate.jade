@@ -1,0 +1,33 @@
+.container
+    .row
+        .col-sm-4
+        .col-sm-4.text-center
+            .circle.icon
+                .glyphicon.glyphicon-user
+            br
+            | login
+            br
+            br
+    .row
+        .col-sm-4
+        .col-sm-4
+            .input-group.input-group-lg.emailGroup
+                .input-group-addon @
+                input.form-control.email(type='text', placeholder='Email')
+            br
+            .input-group.input-group-lg.passwordGroup
+                .input-group-addon
+                    .glyphicon.glyphicon-asterisk
+                input.form-control.password(type='password', placeholder='Password')
+            .input-group.input-group-lg.errorGroup
+                .help-block Niepoprawny login lub hasło!
+            br
+            .checkbox
+                label
+                    input.rememberMe(type='checkbox', value='')
+                    | Zapamiętaj mnie
+            br
+            .text-right
+                button.btn.btn-default.submit(type='submit') Zaloguj
+            br
+            br

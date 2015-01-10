@@ -1,0 +1,8 @@
+a.dropdown-toggle.navigationItem.img-rounded(data-toggle='dropdown', role='button', href='#', aria-expanded='false')
+    span.glyphicon.glyphicon-user(aria-hidden='true')
+    span.carret
+ul.dropdown-menu(role='menu')
+    li.dropdown-header(role='presentation') #{name} #{surname}
+    li.divider(role='presentation')
+    li(role='presentation')
+        a.logout(role='menuitem', tabindex='-1', href='#') Wyloguj

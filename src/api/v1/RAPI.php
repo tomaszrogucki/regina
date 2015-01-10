@@ -52,6 +52,22 @@ class RAPI extends API
         }
     }
 
+    protected function me($args) {
+        if ($this->method == 'GET') {
+            $userBean = $this->userService->getUserByToken($this->token);
+
+            if($userBean != null) {
+                return ['id' => $userBean->id, 'email' => $userBean->email, 'name' => $userBean->name, 'surname' => $userBean->surname];
+            }
+            else {
+                throw new Exception('No user matching the token', 404);
+            }
+        } else {
+            // TODO: verify http code
+            throw new Exception('Only accepts GET requests', 405);
+        }
+    }
+
     protected function oauth($args) {
         if ($this->method == 'POST') {
             $data = $this->request;
