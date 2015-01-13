@@ -13,7 +13,7 @@ var Router = Backbone.Router.extend({
         'omnie': 'aboutMe',
         'uslugi': 'services',
         'kontakt': 'contact',
-        'wiadomosci': 'information',
+        'wiadomosci': 'posts',
         'login': 'login',
         '*path': 'main'
     },
@@ -45,8 +45,8 @@ var Router = Backbone.Router.extend({
         this.skeletonView.renderModule('contact');
     },
 
-    information: function () {
-        this.skeletonView.renderModule('information');
+    posts: function () {
+        this.skeletonView.renderModule('posts');
     },
 
     login: function () {

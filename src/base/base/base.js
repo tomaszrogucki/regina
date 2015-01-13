@@ -8,6 +8,10 @@ var template = require('helpers').template;
 
 var BaseView = Backbone.View.extend({
     render: function () {
+        if (_.isEmpty(this.el)) {
+            this.setElement(this.$el.selector);
+        }
+
         var modelJson = (this.model instanceof Backbone.Model) ? this.model.toJSON() : this.model || {};
         this.$el.html(template(this.template, modelJson));
         return this;
@@ -16,9 +20,14 @@ var BaseView = Backbone.View.extend({
 
 var BaseCollectionView = Backbone.View.extend({
     render: function () {
+        if (_.isEmpty(this.el)) {
+            this.setElement(this.$el.selector);
+        }
+
         if (this.view) {
             var $fragment = $(document.createDocumentFragment());
             this.collection.each(function (model) {
+                model = (model instanceof BaseModel) ? model.toJSON() : model || {};
                 var view = new this.view({model: model});
                 var viewHtml = view.render();
                 $fragment.append(viewHtml.$el);
@@ -35,11 +44,14 @@ var BaseCollectionView = Backbone.View.extend({
 
 var BaseModel = Backbone.Model;
 
+var BaseCollection = Backbone.Collection;
+
 
 var Base = {
     View: BaseView,
     CollectionView: BaseCollectionView,
-    Model: BaseModel
+    Model: BaseModel,
+    Collection: BaseCollection
 };
 
 

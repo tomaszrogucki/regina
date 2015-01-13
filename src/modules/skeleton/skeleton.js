@@ -10,7 +10,7 @@ var Footer = require('footer');
 var AboutMe = require('aboutMe');
 var Services = require('services');
 var Contact = require('contact');
-var Information = require('information');
+var Posts = require('posts');
 var Login = require('login');
 
 
@@ -30,7 +30,7 @@ var SkeletonView = Base.View.extend({
             main: Main,
             services: Services,
             contact: Contact,
-            information: Information,
+            posts: Posts,
             login: Login
         }
     },

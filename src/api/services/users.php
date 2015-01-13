@@ -90,11 +90,7 @@ class UserService {
 
     public function getPermissionsByUser($userBean) {
         if($userBean != null) {
-            function getPermissionName($permissionBean) {
-                return $permissionBean->permission;
-            }
-
-            return array_map(getPermissionName, $userBean->sharedPermissionList);
+            return array_map(array($this, 'getPermissionName'), $userBean->sharedPermissionList);
         }
         else {
             return [];
@@ -137,5 +133,9 @@ class UserService {
     // Private
     private function generateToken($user = null) {
         return md5(strval(mt_rand()));
+    }
+
+    private function getPermissionName($permissionBean) {
+        return $permissionBean->permission;
     }
 }

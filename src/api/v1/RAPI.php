@@ -57,7 +57,7 @@ class RAPI extends API
             $userBean = $this->userService->getUserByToken($this->token);
 
             if($userBean != null) {
-                return ['id' => $userBean->id, 'email' => $userBean->email, 'name' => $userBean->name, 'surname' => $userBean->surname];
+                return ['id' => $userBean->id, 'email' => $userBean->email, 'name' => $userBean->name, 'surname' => $userBean->surname, 'permissions' => array_values($this->permissions)];
             }
             else {
                 throw new Exception('No user matching the token', 404);

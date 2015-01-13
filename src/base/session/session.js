@@ -12,7 +12,6 @@ var User = require('user');
 
 var token = '';
 var user = new User.Model();
-var permissions = [];
 
 var init = function () {
     var cookieToken = $.cookie('token');
@@ -74,6 +73,14 @@ var logout = function () {
     this.trigger('loggedOut');
 };
 
+var isLoggedIn = function () {
+    return !_.isEmpty(token) && !_.isEmpty(user.get('id'));
+};
+
+var hasPermission = function (permission) {
+    return _.contains(user.get('permissions'), permission);
+};
+
 var sync = Backbone.sync;
 var _addAuthorizeHeader = function () {
     Backbone.sync = function (method, model, options) {
@@ -102,7 +109,9 @@ var session = {
     init: init,
     authenticate: authenticate,
     remember: remember,
-    logout: logout
+    logout: logout,
+    isLoggedIn: isLoggedIn,
+    hasPermission: hasPermission
 };
 
 _.extend(session, Backbone.Events);
