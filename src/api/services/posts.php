@@ -41,6 +41,26 @@ class PostsService {
         return R::findAll('post', 'ORDER BY created DESC LIMIT ' . $limit . ' OFFSET ' . $offset);
     }
 
+    public function getPostById($id) {
+        return R::load('post', $id);
+    }
+
+    public function getMetadata() {
+        $total = R::count('post');
+
+        // TODO: this is a very bad temporary implementation, improve it!
+        $postBeans = R::findAll('post');
+        $titles = [];
+        $tmpTitleIds = [];
+
+        foreach($postBeans as $postBean) {
+            array_push($titles, $postBean->title);
+            array_push($tmpTitleIds, $postBean->id);
+        }
+
+        return ['total' => $total, 'titles' => $titles, 'tmpTitleIds' => $tmpTitleIds];
+    }
+
     public function createTag($tag) {
         $tagBean = R::dispense('tag');
         $tagBean->tag = $tag;

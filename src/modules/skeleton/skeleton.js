@@ -50,11 +50,11 @@ var SkeletonView = Base.View.extend({
         return this;
     },
 
-    renderModule: function (module) {
+    renderModule: function (module, options) {
         var NewModule = this.modules[module];
         if (NewModule) {
             this.mainView.remove();
-            this.mainView = new NewModule.View();
+            this.mainView = new NewModule.View(options);
             this.mainView.render();
             this.$('#content').append(this.mainView.$el);
         }

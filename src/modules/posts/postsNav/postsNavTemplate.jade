@@ -1,0 +1,7 @@
+.panel.panel-default.sideNav
+    .panel-heading
+        h3.panel-title Nawigacja
+    .list-group
+        - if (titles.length)
+            - for (var i = titles.length - 1; i >= 0; i--)
+                a.list-group-item.postNavItem(href='/wiadomosci/#{tmpTitleIds[i]}') #{titles[i]}

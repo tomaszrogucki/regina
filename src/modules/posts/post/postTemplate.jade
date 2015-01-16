@@ -1,6 +1,12 @@
-.col-sm-12
+- var id = id ? 'wiadomosc' + id : 'wiadomoscnull'
+.col-sm-12(id='#{id}')
     if title
-        h1 !{title}
+        h1.editable.title !{title}
 .col-sm-12
+    if (created)
+        h4 #{created}
+.col-sm-12.editable.content
     if (content)
         | !{content}
+.col-sm-12.save.hidden
+    a.btn.btn-default(href='#', role='button') Zapisz

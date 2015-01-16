@@ -114,13 +114,20 @@ class RAPI extends API
         switch ($this->method) {
             case 'GET':
                 $data = $this->request;
-                $postBeans = $this->postsService->getPosts($data['page'], $data['perPage']);
+                if (sizeof($args) == 1) {
+                    $id = $args[0];
+                    $postBeans = [$this->postsService->getPostById($id)];
+                }
+                else {
+                    $postBeans = $this->postsService->getPosts($data['page'], $data['perPage']);
+                }
                 $posts = [];
                 foreach($postBeans as $postBean) {
                     $post = ['id' => $postBean->id, 'content' => $postBean->content, 'title' => $postBean->title, 'created' => $postBean->created, 'updated' => $postBean->updated];
                     array_push($posts, $post);
                 }
-                return ['posts' => $posts];
+                $metadata = $this->postsService->getMetadata();
+                return ['posts' => $posts, 'metadata' => $metadata];
                 break;
 
             case 'POST':

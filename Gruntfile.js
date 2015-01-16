@@ -147,13 +147,13 @@ module.exports = function (grunt) {
             prodConfig: {
                 expand: true,
                 cwd: './src/config/production',
-                src: ['config.php'],
+                src: ['config_regina.php'],
                 dest: './dist/production'
             },
             devConfig: {
                 expand: true,
                 cwd: './src/config/development',
-                src: ['config.php'],
+                src: ['config_regina.php'],
                 dest: './dist/development'
             },
 
