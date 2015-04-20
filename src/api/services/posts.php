@@ -50,15 +50,15 @@ class PostsService {
 
         // TODO: this is a very bad temporary implementation, improve it!
         $postBeans = R::findAll('post');
-        $titles = [];
-        $tmpTitleIds = [];
+        $titles = array();
+        $tmpTitleIds = array();
 
         foreach($postBeans as $postBean) {
             array_push($titles, $postBean->title);
             array_push($tmpTitleIds, $postBean->id);
         }
 
-        return ['total' => $total, 'titles' => $titles, 'tmpTitleIds' => $tmpTitleIds];
+        return array('total' => $total, 'titles' => $titles, 'tmpTitleIds' => $tmpTitleIds);
     }
 
     public function createTag($tag) {
@@ -68,7 +68,7 @@ class PostsService {
         try {
             $id = R::store($tagBean);
         }
-        catch(RedBeanPHP\RedException\SQL $e) {
+        catch(SQL $e) {
             if($e->getSQLState() == 23000) {
                 throw new Exception('Tag ' . $tag . ' already exists', 409);
             }
@@ -78,6 +78,6 @@ class PostsService {
     }
 
     public function getAnonymousPermissions() {
-        return [Permissions::READ_POST];
+        return array(Permissions::READ_POST);
     }
 }

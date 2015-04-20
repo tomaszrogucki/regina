@@ -10,7 +10,7 @@ class RAPI extends API
     protected $userService;
     protected $postsService;
 
-    protected $permissions = [];
+    protected $permissions = array();
     protected $user;
 
     public function __construct($request) {
@@ -25,7 +25,7 @@ class RAPI extends API
         function setAnonymousPermissions($userService, $services) {
             $anonymousUserBean = $userService->getAnonymousUser();
             foreach($services as $service) {
-                $permissions = [];
+                $permissions = array();
 
                 if(method_exists($service, getAnonymousPermissions)) {
                     $permissions = $service->getAnonymousPermissions();
@@ -45,7 +45,7 @@ class RAPI extends API
             $data = $this->request;
             $id = $this->userService->createUser($this->permissions, $data['email'], $data['password'], $data['name'], $data['surname']);
 
-            return ['id' => $id, 'email' => $data['email'], 'password' => $data['password'], 'name' => $data['name'], 'surname' => $data['surname']];
+            return array('id' => $id, 'email' => $data['email'], 'password' => $data['password'], 'name' => $data['name'], 'surname' => $data['surname']);
         } else {
             // TODO: verify http code
             throw new Exception('Only accepts POST requests', 405);
@@ -57,7 +57,7 @@ class RAPI extends API
             $userBean = $this->userService->getUserByToken($this->token);
 
             if($userBean != null) {
-                return ['id' => $userBean->id, 'email' => $userBean->email, 'name' => $userBean->name, 'surname' => $userBean->surname, 'permissions' => array_values($this->permissions)];
+                return array('id' => $userBean->id, 'email' => $userBean->email, 'name' => $userBean->name, 'surname' => $userBean->surname, 'permissions' => array_values($this->permissions));
             }
             else {
                 throw new Exception('No user matching the token', 404);
@@ -72,7 +72,7 @@ class RAPI extends API
         if ($this->method == 'POST') {
             $data = $this->request;
             $token = $this->userService->authenticate($data['email'], $data['password']);
-            return ['token' => $token];
+            return array('token' => $token);
         } else {
             // TODO: verify http code
             throw new Exception('Only accepts POST requests', 405);
@@ -82,11 +82,12 @@ class RAPI extends API
     protected function permissions($args) {
         switch ($this->method) {
             case 'GET':
-                $permissions = [];
+                $permissions = array();
                 foreach($this->userService->getAllPermissions($this->permissions) as $permissionBean) {
-                    array_push($permissions, $permissionBean->getProperties()['permission']);
+                    $permissions = $permissionBean->getProperties();
+                    array_push($permissions, $permissions['permission']);
                 }
-                return ['permissions' => $permissions];
+                return array('permissions' => $permissions);
                 break;
 
             case 'POST':
@@ -96,12 +97,13 @@ class RAPI extends API
                 $userBean = $this->userService->getUserById($userId);
                 $this->userService->setPermissionToUser($this->permissions, $permission, $userBean);
 
-                $userPermissions = [];
+                $userPermissions = array();
                 foreach($userBean->sharedPermissionList as $userPermissionBean) {
-                    array_push($userPermissions, $userPermissionBean->getProperties()['permission']);
+                    $permissions = $userPermissionBean->getProperties();
+                    array_push($userPermissions, $permissions['permission']);
                 }
 
-                return ['permissions' => $userPermissions];
+                return array('permissions' => $userPermissions);
                 break;
 
             default:
@@ -116,18 +118,18 @@ class RAPI extends API
                 $data = $this->request;
                 if (sizeof($args) == 1) {
                     $id = $args[0];
-                    $postBeans = [$this->postsService->getPostById($id)];
+                    $postBeans = array($this->postsService->getPostById($id));
                 }
                 else {
                     $postBeans = $this->postsService->getPosts($data['page'], $data['perPage']);
                 }
-                $posts = [];
+                $posts = array();
                 foreach($postBeans as $postBean) {
-                    $post = ['id' => $postBean->id, 'content' => $postBean->content, 'title' => $postBean->title, 'created' => $postBean->created, 'updated' => $postBean->updated];
+                    $post = array('id' => $postBean->id, 'content' => $postBean->content, 'title' => $postBean->title, 'created' => $postBean->created, 'updated' => $postBean->updated);
                     array_push($posts, $post);
                 }
                 $metadata = $this->postsService->getMetadata();
-                return ['posts' => $posts, 'metadata' => $metadata];
+                return array('posts' => $posts, 'metadata' => $metadata);
                 break;
 
             case 'POST':
@@ -135,7 +137,7 @@ class RAPI extends API
                 $content = $data['content'];
                 $title = $data['title'];
                 $postBean = $this->postsService->createPost($this->permissions, $content, $title);
-                return ['id' => $postBean->id, 'content' => $postBean->content, 'title' => $postBean->title, 'created' => $postBean->created, 'updated' => $postBean->updated];
+                return array('id' => $postBean->id, 'content' => $postBean->content, 'title' => $postBean->title, 'created' => $postBean->created, 'updated' => $postBean->updated);
                 break;
 
             case 'PUT':
@@ -144,7 +146,7 @@ class RAPI extends API
                 $content = $data['content'];
                 $title = $data['title'];
                 $postBean = $this->postsService->updatePost($this->permissions, $id, $content, $title);
-                return ['id' => $postBean->id, 'content' => $postBean->content, 'title' => $postBean->title, 'created' => $postBean->created, 'updated' => $postBean->updated];
+                return array('id' => $postBean->id, 'content' => $postBean->content, 'title' => $postBean->title, 'created' => $postBean->created, 'updated' => $postBean->updated);
                 break;
 
             default:

@@ -24,7 +24,7 @@ class UserService {
             try {
                 $id = R::store($userBean);
             }
-            catch(RedBeanPHP\RedException\SQL $e) {
+            catch(SQL $e) {
                 if($e->getSQLState() == 23000) {
                     throw new Exception('User with ' . $email . ' email address already exists', 409);
                 }
@@ -39,7 +39,7 @@ class UserService {
     }
 
     public function getUserByEmail($email) {
-        $userBean = R::findOne('user', 'email = ?', [$email]);
+        $userBean = R::findOne('user', 'email = ?', array($email));
         return $userBean;
     }
 
@@ -52,12 +52,12 @@ class UserService {
     }
 
     public function getUserByToken($token) {
-        $tokenBean = R::findOne('token', 'token = ?', [$token]);
+        $tokenBean = R::findOne('token', 'token = ?', array($token));
         return $tokenBean->user;
     }
 
     public function authenticate($email, $password) {
-        $userBean = R::findOne('user', 'email = ? AND password = ?', [$email, $password]);
+        $userBean = R::findOne('user', 'email = ? AND password = ?', array($email, $password));
 
         if($userBean == null) {
             throw new Exception('Invalid username or password', 404);
@@ -90,16 +90,16 @@ class UserService {
 
     public function getPermissionsByUser($userBean) {
         if($userBean != null) {
-            return array_map(array($this, 'getPermissionName'), $userBean->sharedPermissionList);
+            return array_map(array($this, 'getPermissionName'), $userBean->sharedPermission);
         }
         else {
-            return [];
+            return array();
         }
     }
 
     public function setPermissionToUser($permissions, $permission, $userBean) {
         if(in_array(Permissions::WRITE_PERMISSION, $permissions)) {
-            $permissionBean = R::findOne('permission', 'permission = ?', [$permission]);
+            $permissionBean = R::findOne('permission', 'permission = ?', array($permission));
 
             if($permissionBean == null) {
                 $permissionBean = R::dispense('permission');
@@ -108,7 +108,7 @@ class UserService {
             }
 
             if($userBean != null) {
-                $userBean->sharedPermissionList[] = $permissionBean;
+                $userBean->sharedPermission[] = $permissionBean;
                 R::store($userBean);
             }
 
