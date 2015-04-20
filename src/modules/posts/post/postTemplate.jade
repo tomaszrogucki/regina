@@ -1,5 +1,6 @@
-- var id = id ? 'wiadomosc' + id : 'wiadomoscnull'
-.col-sm-12(id='#{id}')
+- var id = id
+- var postId = id ? 'wiadomosc' + id : 'wiadomoscnull'
+.col-sm-12(id='#{postId}')
     if title
         h1.editable.title !{title}
 .col-sm-12

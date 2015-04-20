@@ -8,7 +8,7 @@ var template = require('helpers').template;
 
 var BaseView = Backbone.View.extend({
     render: function () {
-        if (_.isEmpty(this.el)) {
+        if (_.isUndefined(this.el)) {
             this.setElement(this.$el.selector);
         }
 
