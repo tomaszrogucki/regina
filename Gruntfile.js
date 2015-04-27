@@ -40,7 +40,7 @@ module.exports = function (grunt) {
                     runtime: false
                 },
                 files: {
-                    "./dist/production/www": ["./src/index.jade"]
+                    "./dist/production/www/kowalskastall": ["./src/index.jade"]
                 }
             },
             dev: {
@@ -50,7 +50,7 @@ module.exports = function (grunt) {
                     runtime: false
                 },
                 files: {
-                    "./dist/development/www/": ["./src/index.jade"]
+                    "./dist/development/www/kowalskastall/": ["./src/index.jade"]
                 }
             }
         },
@@ -58,7 +58,7 @@ module.exports = function (grunt) {
         stylus: {
             prod: {
                 files: {
-                    './dist/production/www/assets/css/style.css': './src/tmp/style.styl'
+                    './dist/production/www/kowalskastall/assets/css/style.css': './src/tmp/style.styl'
                 }
             },
             dev: {
@@ -66,7 +66,7 @@ module.exports = function (grunt) {
                     compress: false
                 },
                 files: {
-                    './dist/development/www/assets/css/style.css': './src/tmp/style.styl'
+                    './dist/development/www/kowalskastall/assets/css/style.css': './src/tmp/style.styl'
                 }
             }
         },
@@ -74,7 +74,7 @@ module.exports = function (grunt) {
         browserify2: {
             prod: {
                 entry: ['./src/base/router/router.js'],
-                compile: './dist/production/www/assets/js/application.js',
+                compile: './dist/production/www/kowalskastall/assets/js/application.js',
                 options: {
                     expose: {
                         files: [
@@ -89,7 +89,7 @@ module.exports = function (grunt) {
             },
             dev: {
                 entry: ['./src/base/router/router.js'],
-                compile: './dist/development/www/assets/js/application.js',
+                compile: './dist/development/www/kowalskastall/assets/js/application.js',
                 options: {
                     expose: {
                         files: [
@@ -109,39 +109,39 @@ module.exports = function (grunt) {
                 expand: true,
                 cwd: './src/',
                 src: '*.html',
-                dest: './dist/production/www'
+                dest: './dist/production/www/kowalskastall'
             },
             devHtml: {
                 expand: true,
                 cwd: './src/',
                 src: '*.html',
-                dest: './dist/development/www'
+                dest: './dist/development/www/kowalskastall/kowalskastall'
             },
 
             prodImg: {
                 expand: true,
                 cwd: './src/modules/',
                 src: '**/*.jpg',
-                dest: './dist/production/www/assets'
+                dest: './dist/production/www/kowalskastall/assets'
             },
             devImg: {
                 expand: true,
                 cwd: './src/modules/',
                 src: '**/*.jpg',
-                dest: './dist/development/www/assets'
+                dest: './dist/development/www/kowalskastall/assets'
             },
 
             prodApi: {
                 expand: true,
                 cwd: './src/api',
                 src: ['**/*.*', '../.htaccess'],
-                dest: './dist/production/www/api'
+                dest: './dist/production/www/kowalskastall/api'
             },
             devApi: {
                 expand: true,
                 cwd: './src/api',
                 src: ['**/*.*', '../.htaccess'],
-                dest: './dist/development/www/api'
+                dest: './dist/development/www/kowalskastall/api'
             },
 
             prodConfig: {
@@ -161,26 +161,26 @@ module.exports = function (grunt) {
                 expand: true,
                 cwd: './src/assets',
                 src: ['**/*.jpg', '**/*.png', '**/*.ttf', '**/*.woff', '**/*.docx', '**/*.pdf'],
-                dest: './dist/production/www/assets'
+                dest: './dist/production/www/kowalskastall/assets'
             },
             devAssets: {
                 expand: true,
                 cwd: './src/assets',
                 src: ['**/*.jpg', '**/*.png', '**/*.ttf', '**/*.woff', '**/*.docx', '**/*.pdf'],
-                dest: './dist/development/www/assets'
+                dest: './dist/development/www/kowalskastall/assets'
             },
 
             prodVendor: {
                 expand: true,
                 cwd: './vendor/bootstrap',
                 src: ['**/*.ttf', '**/*.woff'],
-                dest: './dist/production/www/assets'
+                dest: './dist/production/www/kowalskastall/assets'
             },
             devVendor: {
                 expand: true,
                 cwd: './vendor/bootstrap',
                 src: ['**/*.ttf', '**/*.woff', '**/*.js', '**/*.css'],
-                dest: './dist/development/www/assets'
+                dest: './dist/development/www/kowalskastall/assets'
             }
         },
 
@@ -192,46 +192,46 @@ module.exports = function (grunt) {
             },
             prod: {
                 src: [
-                    'dist/production/www/assets/css/*.css',
-                    'dist/production/www/assets/fonts/*.*',
-                    'dist/production/www/assets/icons/*.*',
-                    'dist/production/www/assets/imgs/*.*',
-                    'dist/production/www/assets/js/*.js'
+                    'dist/production/www/kowalskastall/assets/css/*.css',
+                    'dist/production/www/kowalskastall/assets/fonts/*.*',
+                    'dist/production/www/kowalskastall/assets/icons/*.*',
+                    'dist/production/www/kowalskastall/assets/imgs/*.*',
+                    'dist/production/www/kowalskastall/assets/js/*.js'
                 ],
                 dest: [
-                    'dist/production/www/index.html',
-                    'dist/production/www/assets/css/*.css'
+                    'dist/production/www/kowalskastall/index.html',
+                    'dist/production/www/kowalskastall/assets/css/*.css'
                 ]
             },
             prodPhotos: {
                 src: [
-                    'dist/production/www/assets/photos/*.*'
+                    'dist/production/www/kowalskastall/assets/photos/*.*'
                 ],
                 dest: [
-                    'dist/production/www/assets/js/*.js',
-                    'dist/production/www/assets/css/*.css'
+                    'dist/production/www/kowalskastall/assets/js/*.js',
+                    'dist/production/www/kowalskastall/assets/css/*.css'
                 ]
             },
             dev: {
                 src: [
-                    'dist/development/www/assets/css/*.css',
-                    'dist/development/www/assets/fonts/*.*',
-                    'dist/development/www/assets/icons/*.*',
-                    'dist/development/www/assets/imgs/*.*',
-                    'dist/development/www/assets/js/*.js'
+                    'dist/development/www/kowalskastall/assets/css/*.css',
+                    'dist/development/www/kowalskastall/assets/fonts/*.*',
+                    'dist/development/www/kowalskastall/assets/icons/*.*',
+                    'dist/development/www/kowalskastall/assets/imgs/*.*',
+                    'dist/development/www/kowalskastall/assets/js/*.js'
                 ],
                 dest: [
-                    'dist/development/www/index.html',
-                    'dist/development/www/assets/css/*.css'
+                    'dist/development/www/kowalskastall/index.html',
+                    'dist/development/www/kowalskastall/assets/css/*.css'
                 ]
             },
             devPhotos: {
                 src: [
-                    'dist/development/www/assets/photos/*.*'
+                    'dist/development/www/kowalskastall/assets/photos/*.*'
                 ],
                 dest: [
-                    'dist/development/www/assets/js/*.js',
-                    'dist/development/www/assets/css/*.css'
+                    'dist/development/www/kowalskastall/assets/js/*.js',
+                    'dist/development/www/kowalskastall/assets/css/*.css'
                 ]
             },
             underConstruction: {
@@ -258,7 +258,7 @@ module.exports = function (grunt) {
                     port: 21,
                     authKey: 'key'
                 },
-                src: 'dist/production/www',
+                src: 'dist/production/www/kowalskastall',
                 dest: '/public_html/kowalskastall',
                 exclusions: []
             }
